@@ -1,0 +1,56 @@
+#modalConfirm{
+  padding: 3.2rem;
+}
+
+#modalConfirm .title {
+  font-weight: 600;
+  font-size: 2.4rem;
+  line-height: 3.6rem;
+  margin-bottom: 2.4rem;
+
+  color: #212121;
+}
+
+#modalConfirm .message{
+  font-size: 1.6rem;
+  line-height: 3.6rem;
+  color: #212121;
+}
+
+#modalConfirm .actions{
+  margin-top: 3.2rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+#modalConfirm .actions button{
+  font-weight: 600;
+  font-size: 1.4rem;
+  line-height: 2.4rem;
+  padding: 0.8rem 1.6rem;
+  min-width: 17.6rem;
+
+  color: #fff;
+  background: #212121;
+  border: 1px #212121;
+
+  cursor: pointer;
+  outline: none;
+  transition: all .2s;
+}
+#modalConfirm .actions button.outline{
+  background: #fff;
+  border: 1px solid #212121;
+  color: #212121;
+}
+#modalConfirm .actions button.outline:hover{
+  background: #fff;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+#modalConfirm .actions button:hover{
+  background: #444444;
+}
+#modalConfirm .actions button:nth-child(2){
+  margin-left: 2.4rem;
+}

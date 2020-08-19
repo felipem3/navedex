@@ -1,0 +1,56 @@
+#naver-detail{
+  display: flex;
+  min-height: 50.3rem;
+}
+
+#naver-detail .avatar{
+  flex-grow: 1;
+  object-fit: cover;
+  max-width: 50.3rem;
+}
+
+#naver-detail .detail{
+  flex-grow: 2;
+  padding: 3.2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+#naver-detail .detail .name{
+  font-weight: 600;
+  font-size: 2.4rem;
+  line-height: 3.6rem;
+  margin-bottom: 1rem;
+  color: #000;
+}
+
+#naver-detail .detail .office{
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+  margin-bottom: 2.4rem;
+}
+
+#naver-detail .detail .title{
+  font-weight: 600;
+  font-size: 1.6rem;
+  color: #212121;
+  line-height: 2.4rem;
+  margin-bottom: 1rem;
+}
+
+#naver-detail .detail .description{
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+  color: #212121;
+  margin-bottom: 2.4rem;
+}
+
+#naver-detail .detail .actions{
+  flex-grow: 1;
+  display: flex;
+  align-items: flex-end;
+}
+
+#naver-detail .detail .actions a:nth-child(2){
+  margin-left: 1.6rem;
+}

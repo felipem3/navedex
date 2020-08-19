@@ -1,0 +1,70 @@
+.naver-item{
+  width: 23%;
+  margin: 1%;
+  transition: box-shadow 0.2s;
+}
+
+.naver-item:nth-child(4n){
+  margin-right: 0;
+}
+.naver-item:nth-child(4n+1){
+  margin-left: 0;
+}
+
+
+.naver-item:hover{
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.naver-item .avatar {
+  width: 100%;
+  height: 28rem;
+  min-height: 28rem;
+  min-width: 100%;
+  object-fit: cover;
+}
+.naver-item span{
+  cursor: pointer;
+}
+.naver-item .name {
+  font-weight: 600;
+  font-size: 1.6rem;
+  line-height: 1.8rem;
+  color:#212121;
+
+  margin-top: 1.6rem;
+  margin-left: 1.2rem;
+}
+
+.naver-item .job-role {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+  color: #212121;
+
+  margin-top: 0.4rem;
+  margin-bottom: 1.2rem;
+  margin-left: 1.2rem;
+}
+
+.naver-item .actions{
+  margin-left: 1.2rem;
+  margin-bottom: 1.2rem;
+}
+
+.naver-item .actions a:nth-child(2){
+  margin-left: 1.2rem;
+}
+
+.naver-item .actions img{
+  padding: 0.2rem;
+  cursor: pointer;
+  border-radius: 1.2rem;
+
+  transition: background 0.4s;
+}
+.naver-item .actions img:hover{
+  background: #ddd;
+}

@@ -1,0 +1,43 @@
+#home-page{
+  padding: 2.4rem 3.2rem;
+}
+
+#home-page .page-head{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 2.0rem;
+}
+
+#home-page .page-head h1{
+  color: #212121;
+
+  font-weight: 600;
+  font-size: 4.0rem;
+}
+
+#home-page .page-head .add-button{
+  background: #212121;
+  color: #fff;
+  border: none;
+  outline: none;
+  padding: 0.8rem 1.6rem;
+
+  font-weight: 600;
+  font-size: 1.4rem;
+  line-height: 2.4rem;
+
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+#home-page .page-head .add-button:hover{
+  background: #444444;
+}
+#home-page .navers-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}

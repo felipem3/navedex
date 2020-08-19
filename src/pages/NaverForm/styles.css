@@ -1,0 +1,69 @@
+#naver-form-page{
+  padding: 2.4rem 3.2rem;
+}
+
+#naver-form-page .box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#naver-form-page .box .box-title {
+  display: flex;
+  width: 60rem;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+#naver-form-page .box .box-title button{
+  padding: 0.4rem;
+  margin-right: 1.6rem;
+
+  background: transparent;
+  border: none;
+
+  font-size: 2.4rem;
+  font-weight: 600;
+  color: #212121;
+
+  cursor: pointer;
+  outline: none;
+}
+
+#naver-form-page .box .box-title button:hover{
+  color: #444444;
+}
+
+#naver-form-page .box .box-title h1{
+  font-weight: 600;
+  font-size: 2.4rem;
+  line-height: 3.6rem;
+
+  color: #212121;
+}
+
+#naver-form-page form{
+  display: flex;
+  flex-wrap: wrap;
+  width: 60rem;
+}
+
+#naver-form-page form .form-group{
+  width: 49%;
+  margin-bottom: 3.2rem;
+}
+
+#naver-form-page form .form-group:nth-child(2n+1){
+  margin-right: 2%;
+}
+
+#naver-form-page form .action{
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+}
+
+#naver-form-page form .button{
+  align-self: flex-end;
+}
