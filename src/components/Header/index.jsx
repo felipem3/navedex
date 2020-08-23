@@ -13,7 +13,9 @@ function Header() {
   }
   return (
     <header>
-      <img src={logo} alt="nave.rs" className="logo" />
+      <a href="https://nave.rs/" target="blank">
+        <img src={logo} alt="nave.rs" className="logo" />
+      </a>
       <Link to="/login" onClick={handleLogout}>
         Sair
       </Link>

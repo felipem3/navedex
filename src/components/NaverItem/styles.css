@@ -1,3 +1,20 @@
+
+@media(max-width:1000px){
+  .naver-item{
+    width: 48%;
+    margin: 1%;
+    transition: box-shadow 0.2s;
+  }
+}
+
+@media(max-width:700px){
+  .naver-item{
+    width: 99%;
+    margin: 1%;
+    transition: box-shadow 0.2s;
+  }
+}
+
 .naver-item{
   width: 23%;
   margin: 1%;

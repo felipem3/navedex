@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import Modal from '../Modal';
 
@@ -35,5 +36,18 @@ function ModalConfirm({
     </Modal>
   );
 }
+
+ModalConfirm.defaultProps = {
+  showButtons: false,
+};
+
+ModalConfirm.propTypes = {
+  visible: PropTypes.bool.isRequired,
+  onCancel: PropTypes.func.isRequired,
+  title: PropTypes.string.isRequired,
+  message: PropTypes.string.isRequired,
+  showButtons: PropTypes.bool,
+  onConfirm: PropTypes.func,
+};
 
 export default ModalConfirm;

@@ -10,6 +10,7 @@ import Button from '../../components/Button';
 import ModalConfirm from '../../components/ModalConfirm';
 
 import './styles.css';
+import Loader from '../../components/Loader';
 
 function NaverForm() {
   const history = useHistory();
@@ -20,12 +21,13 @@ function NaverForm() {
     async function getNaver() {
       setLoading(true);
       const response = await api.get(`/navers/${id}`);
-      console.log(response.data);
       setNaver(response.data);
       setLoading(false);
     }
     if (id) {
       getNaver();
+    } else {
+      setLoading(false);
     }
   }, [id]);
 
@@ -37,7 +39,7 @@ function NaverForm() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    const naverUpdate = {
+    const newNaver = {
       admission_date: moment(naver.admission_date, 'YYYY-MM-DD').format(
         'DD/MM/YYYY',
       ),
@@ -48,14 +50,18 @@ function NaverForm() {
       url: naver.url,
     };
     try {
-      const response = await api.put(`/navers/${id}`, naverUpdate);
+      let response;
+      if (id) {
+        response = await api.put(`/navers/${id}`, newNaver);
+      } else {
+        response = await api.post(`/navers`, newNaver);
+      }
       console.log(response);
-      history.push('/');
+      toggleShowConfirm();
     } catch (err) {
       console.log(err);
       alert('erro ao salvar');
     }
-    // toggleShowConfirm();
   }
 
   function onChange(e) {
@@ -73,16 +79,17 @@ function NaverForm() {
   return (
     <div id="naver-form-page">
       <Header />
-      <div className="box">
-        <div className="box-title">
-          <button type="button" onClick={() => history.goBack()}>
-            &lt;
-          </button>
-          <h1>Adicionar Naver</h1>
-        </div>
-        {loading ? (
-          <p>Carregando</p>
-        ) : (
+      {loading ? (
+        <Loader />
+      ) : (
+        <div className="box">
+          <div className="box-title">
+            <button type="button" onClick={() => history.goBack()}>
+              &lt;
+            </button>
+            <h1>{id ? 'Editar' : 'Adicionar'} Naver</h1>
+          </div>
+
           <form onSubmit={handleSubmit}>
             <Input
               name="name"
@@ -148,13 +155,16 @@ function NaverForm() {
               <Button type="submit">Salvar</Button>
             </div>
           </form>
-        )}
-      </div>
+        </div>
+      )}
       <ModalConfirm
         visible={showConfirm}
-        onCancel={toggleShowConfirm}
-        title="Naver criado"
-        message="Naver criado com sucesso!"
+        onCancel={() => {
+          toggleShowConfirm();
+          history.push('/');
+        }}
+        title={`Naver ${id ? 'atualizado' : 'criado'} `}
+        message={`Naver ${id ? 'atualizado' : 'criado'} com sucesso!`}
       />
     </div>
   );

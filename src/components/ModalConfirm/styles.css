@@ -1,3 +1,17 @@
+
+@media(max-width:1000px){
+  #modalConfirm .actions button{
+    min-width: 100%;
+  }
+  #modalConfirm .actions{
+    flex-direction: column;
+  }
+  #modalConfirm .actions button:nth-child(2){
+    margin-left: 0;
+    margin-top: 1.2rem;
+  }
+}
+
 #modalConfirm{
   padding: 3.2rem;
 }

@@ -1,0 +1,24 @@
+#loader-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#loader-container span{
+  font-size: 1.8rem;
+  margin-left: 1.2rem;
+}
+
+#loader-container .loader {
+  border: 8px solid #ddd; /* Light grey */
+  border-top: 8px solid #212121; /* Blue */
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  animation: loader-spin 2s linear infinite;
+}
+
+@keyframes loader-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

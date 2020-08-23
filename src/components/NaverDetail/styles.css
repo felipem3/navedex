@@ -1,3 +1,26 @@
+@media(max-width:1000px){
+  #naver-detail .avatar{
+    max-width: 32rem;
+  }
+}
+
+@media(max-width:700px){
+  #naver-detail{
+    flex-direction: column;
+    align-items: center;
+  }
+  #naver-detail .avatar{
+    width: 90%;
+    margin: 1.2rem auto;
+  }
+
+  #naver-detail .detail{
+    flex-grow: 1;
+    width: 100%;
+    align-items: center;
+  }
+}
+
 #naver-detail{
   display: flex;
   min-height: 50.3rem;
@@ -49,6 +72,10 @@
   flex-grow: 1;
   display: flex;
   align-items: flex-end;
+}
+
+#naver-detail .detail .actions a{
+  cursor: pointer;
 }
 
 #naver-detail .detail .actions a:nth-child(2){

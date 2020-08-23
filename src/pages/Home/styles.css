@@ -36,6 +36,7 @@
 #home-page .page-head .add-button:hover{
   background: #444444;
 }
+
 #home-page .navers-list {
   display: flex;
   flex-wrap: wrap;

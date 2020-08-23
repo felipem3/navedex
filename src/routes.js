@@ -31,21 +31,5 @@ const Routes = () => (
   </BrowserRouter>
 )
 
-function routes() {
-  return (
-    <BrowserRouter>
-      <Switch>
-        <Route path="/login">
-          <Login />
-        </Route>
-        <PrivateRoute path="/">
-          <Route path="/" exact component={Home} />
-          <Route path="/naver-form" component={NaverForm} />
-        </PrivateRoute>
-      </Switch>
-
-    </BrowserRouter>
-  )
-}
 
 export default Routes

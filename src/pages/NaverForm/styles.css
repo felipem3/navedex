@@ -1,3 +1,19 @@
+
+@media(max-width:1000px){
+  #naver-form-page form{
+    width: 100%;
+  }
+  #naver-form-page form .form-group{
+    width: 99%;
+  }
+  #naver-form-page form .form-group:nth-child(2n){
+    margin-left: 0;
+  }
+  #naver-form-page .box .box-title {
+    width: 100%;
+  }
+}
+
 #naver-form-page{
   padding: 2.4rem 3.2rem;
 }
@@ -54,8 +70,8 @@
   margin-bottom: 3.2rem;
 }
 
-#naver-form-page form .form-group:nth-child(2n+1){
-  margin-right: 2%;
+#naver-form-page form .form-group:nth-child(2n){
+  margin-left: 2%;
 }
 
 #naver-form-page form .action{

@@ -1,23 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 
 import deleteIcon from '../../assets/img/icons/Delete-Icon.svg';
 import editIcon from '../../assets/img/icons/Edit-Icon.svg';
 import NaverDetail from '../../components/NaverDetail';
 import ModalConfirm from '../../components/ModalConfirm';
-import api from '../../services/api';
 
 import './styles.css';
 import { Link } from 'react-router-dom';
 
-function NaverItem({
-  toggleShowDetail,
-  toggleShowConfirm,
-  naver,
-  deleteNaver,
-}) {
+function NaverItem({ naver, deleteNaver }) {
+  const defaultImageUrl =
+    'https://peoplefacts.com/wp-content/uploads/2014/06/mystery-person.png';
   const [showDetail, setShowDetail] = useState(false);
   const [showConfirm, setShowConfirm] = useState(false);
-
+  const [imgUrl, setImgUrl] = useState('');
+  useEffect(() => {
+    setImgUrl(naver.url);
+  }, [naver.url]);
   function handleToggleShowDetail() {
     setShowDetail(!showDetail);
   }
@@ -40,13 +40,18 @@ function NaverItem({
     <>
       <div className="naver-item">
         <span onClick={handleToggleShowDetail}>
-          <img src={naver.url} alt="avatar" className="avatar" />
+          <img
+            src={imgUrl}
+            alt="avatar"
+            className="avatar"
+            onError={() => setImgUrl(defaultImageUrl)}
+          />
         </span>
         <p className="name">{naver.name}</p>
         <p className="job-role">{naver.job_role}</p>
 
         <div className="actions">
-          <a onClick={handleShowConfirm}>
+          <a href="/#" onClick={handleShowConfirm}>
             <img src={deleteIcon} alt="icone deletar" />
           </a>
           <Link to={`/naver-form/${naver.id}`}>
@@ -54,6 +59,7 @@ function NaverItem({
           </Link>
         </div>
       </div>
+
       <NaverDetail
         naver={naver}
         visible={showDetail}
@@ -71,5 +77,10 @@ function NaverItem({
     </>
   );
 }
+
+NaverItem.propTypes = {
+  naver: PropTypes.object.isRequired,
+  deleteNaver: PropTypes.func.isRequired,
+};
 
 export default NaverItem;

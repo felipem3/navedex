@@ -6,10 +6,15 @@ import Header from '../../components/Header';
 import NaverItem from '../../components/NaverItem';
 
 import './styles.css';
+import ModalConfirm from '../../components/ModalConfirm';
+import Loader from '../../components/Loader';
 
 function Home() {
   const [naversList, setNaversList] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [showConfirm, setShowConfirm] = useState(false);
+  const [modalConfirmTitle, setModalConfirmTitle] = useState('');
+  const [modalConfirmDescription, setModalConfirmDescription] = useState('');
 
   useEffect(() => {
     getList();
@@ -19,18 +24,21 @@ function Home() {
     setNaversList([]);
     setLoading(true);
     const response = await api.get('/navers');
-    console.log(response.data);
     setNaversList(response.data);
     setLoading(false);
   }
 
-  // function toggleShowDetail() {
-  //   setShowDetail(!showDetail);
-  // }
+  function toggleShowConfirm() {
+    setShowConfirm(!showConfirm);
+  }
 
   async function deleteNaver(id) {
-    console.log(id);
     const response = await api.delete(`/navers/${id}`);
+    if (response.status === 200) {
+      setShowConfirm(true);
+      setModalConfirmTitle('Naver excluído');
+      setModalConfirmDescription('Naver excluído com sucesso');
+    }
     console.log(response.status);
     getList();
   }
@@ -44,7 +52,7 @@ function Home() {
         </Link>
       </div>
       {loading ? (
-        <p>Carregando Navers...</p>
+        <Loader />
       ) : (
         <section className="navers-list">
           {naversList.map(naver => (
@@ -57,6 +65,13 @@ function Home() {
           ))}
         </section>
       )}
+      <ModalConfirm
+        visible={showConfirm}
+        onCancel={toggleShowConfirm}
+        showButtons={false}
+        title={modalConfirmTitle}
+        message={modalConfirmDescription}
+      />
     </div>
   );
 }

@@ -1,3 +1,9 @@
+@media(max-width:700px){
+  #login-page form{
+    width: 70%;
+  }
+}
+
 #login-page{
   display: flex;
   align-items: center;
@@ -57,3 +63,4 @@
 #login-page form button:hover{
   background: #444444;
 }
+
