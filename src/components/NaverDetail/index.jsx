@@ -11,12 +11,28 @@ import deleteIcon from '../../assets/img/icons/Delete-Icon.svg';
 import editIcon from '../../assets/img/icons/Edit-Icon.svg';
 
 import './styles.css';
+import api from '../../services/api';
+import Loader from '../Loader';
 
-function NaverDetail({ visible, toggleShowDetail, naver, deleteNaver }) {
+function NaverDetail({ visible, toggleShowDetail, naverId, deleteNaver }) {
   const defaultImageUrl =
     'https://peoplefacts.com/wp-content/uploads/2014/06/mystery-person.png';
   const [showConfirm, setShowConfirm] = useState(false);
+  const [naver, setNaver] = useState({});
   const [imgUrl, setImgUrl] = useState('');
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if (visible) {
+      setLoading(true);
+
+      console.log(naverId);
+      api.get(`/navers/${naverId}`).then(response => setNaver(response.data));
+
+      setLoading(false);
+    }
+  }, [naverId, visible]);
+
   useEffect(() => {
     setImgUrl(naver.url);
   }, [naver.url]);
@@ -34,36 +50,40 @@ function NaverDetail({ visible, toggleShowDetail, naver, deleteNaver }) {
     return (
       <>
         <Modal visible={visible} toggleVisible={toggleShowDetail}>
-          <div id="naver-detail">
-            <img
-              src={imgUrl}
-              alt="Avatar"
-              className="avatar"
-              onError={() => setImgUrl(defaultImageUrl)}
-            />
-            <div className="detail">
-              <h1 className="name">{naver.name}</h1>
-              <h2 className="office">{naver.job_role}</h2>
-              <p className="title">Idade</p>
-              <p className="description">
-                {diffYearsToString(naver.birthdate, 'YYYY-MM-DD')}
-              </p>
-              <p className="title">Tempo de Empresa</p>
-              <p className="description">
-                {diffDateNowToString(naver.admission_date, 'YYYY-MM-DD')}
-              </p>
-              <p className="title">Projetos que participou</p>
-              <p className="description">{naver.project}</p>
-              <div className="actions">
-                <a href="/#" onClick={() => setShowConfirm(true)}>
-                  <img src={deleteIcon} alt="icone deletar" />
-                </a>
-                <Link to={`/naver-form/${naver.id}`}>
-                  <img src={editIcon} alt="icone editar" />
-                </Link>
+          {loading ? (
+            <Loader />
+          ) : (
+            <div id="naver-detail">
+              <img
+                src={imgUrl}
+                alt="Avatar"
+                className="avatar"
+                onError={() => setImgUrl(defaultImageUrl)}
+              />
+              <div className="detail">
+                <h1 className="name">{naver.name}</h1>
+                <h2 className="office">{naver.job_role}</h2>
+                <p className="title">Idade</p>
+                <p className="description">
+                  {diffYearsToString(naver.birthdate, 'YYYY-MM-DD')}
+                </p>
+                <p className="title">Tempo de Empresa</p>
+                <p className="description">
+                  {diffDateNowToString(naver.admission_date, 'YYYY-MM-DD')}
+                </p>
+                <p className="title">Projetos que participou</p>
+                <p className="description">{naver.project}</p>
+                <div className="actions">
+                  <a href="/#" onClick={() => setShowConfirm(true)}>
+                    <img src={deleteIcon} alt="icone deletar" />
+                  </a>
+                  <Link to={`/naver-form/${naver.id}`}>
+                    <img src={editIcon} alt="icone editar" />
+                  </Link>
+                </div>
               </div>
             </div>
-          </div>
+          )}
         </Modal>
         <ModalConfirm
           visible={showConfirm}
@@ -82,7 +102,7 @@ function NaverDetail({ visible, toggleShowDetail, naver, deleteNaver }) {
 NaverDetail.propTypes = {
   visible: PropTypes.bool.isRequired,
   toggleShowDetail: PropTypes.func.isRequired,
-  naver: PropTypes.object.isRequired,
+  naverId: PropTypes.string.isRequired,
   deleteNaver: PropTypes.func.isRequired,
 };
 

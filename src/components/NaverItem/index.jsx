@@ -61,7 +61,7 @@ function NaverItem({ naver, deleteNaver }) {
       </div>
 
       <NaverDetail
-        naver={naver}
+        naverId={naver.id}
         visible={showDetail}
         toggleShowDetail={handleToggleShowDetail}
         deleteNaver={handleDeleteNaver}
